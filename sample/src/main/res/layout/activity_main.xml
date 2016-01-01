@@ -19,48 +19,126 @@
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/fab"
+            app:backgroundTint="@color/accent"
             android:src="@drawable/ic_add_shopping_cart"
             />
 
         <RelativeLayout
+            android:id="@+id/container_switch_panels"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_centerInParent="true">
-
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/panel_audio"
+                >
                 <TextView
-                    android:id="@+id/game_title_text"
-                    android:text="@string/game_title"
-                    style="@style/GameTitleStyle" />
-
+                    style="@style/SwitchPickerStyle"
+                    android:text="Audio"
+                    />
                 <TextView
-                    android:id="@+id/creator_name_text"
-                    android:text="@string/creator_name"
-                    style="@style/GameCreatorStyle" />
+                    style="@style/SwitchPickerStyle"
+                    android:text="2"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="0"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="1"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="6"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/panel_text"
+                >
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="T"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="2"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="0"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="1"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="6"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/panel_filter"
+                >
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="Filters"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="元"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="蛋"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="快"
+                    />
+                <TextView
+                    style="@style/SwitchPickerStyle"
+                    android:text="乐"
+                    />
             </LinearLayout>
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/container_control_buttons"
+            android:orientation="horizontal"
+            android:gravity="center"
             >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/add_to_shopping_cart"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:layout_centerInParent="true"
+                style="@style/SwitchPickerStyle"
+                android:id="@+id/switch_pick_filter"
+                android:text="@string/switch_to_pick_filter"
                 />
-        </RelativeLayout>
+            <TextView
+                style="@style/SwitchPickerStyle"
+                android:id="@+id/switch_pick_text"
+                android:text="@string/switch_to_pick_text"
+                />
+            <TextView
+                style="@style/SwitchPickerStyle"
+                android:id="@+id/switch_pick_audio"
+                android:text="@string/switch_to_pick_audio"
+                />
+        </LinearLayout>
 
     </com.truizlop.fabreveallayout.FABRevealLayout>
 </LinearLayout>

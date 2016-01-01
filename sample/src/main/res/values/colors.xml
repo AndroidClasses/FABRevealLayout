@@ -3,4 +3,12 @@
     <color name="white">#ffffff</color>
     <color name="background">#070a0f</color>
     <color name="fab">#ce2335</color>
+
+    <color name="magenta">#ff6699ff</color>
+    <color name="blue">#ff0f81d9</color>
+    <color name="red">#FF0000</color>
+
+    <color name="primary">@color/magenta</color>
+    <color name="primary_dark">@color/blue</color>
+    <color name="accent">@color/red</color>
 </resources>

@@ -19,18 +19,87 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.truizlop.fabreveallayout.FABRevealLayout;
 import com.truizlop.fabreveallayout.OnRevealChangeListener;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
+
+    @Bind(R.id.fab_reveal_layout)
+    FABRevealLayout fabRevealLayout;
+
+    @Bind(R.id.container_switch_panels)
+    RelativeLayout mContainerPanels;
+
+    @Bind(R.id.container_control_buttons)
+    LinearLayout mContainerControlButtons;
+
+    @OnClick(R.id.switch_pick_filter)
+    void onPickFilterClicked(View view) {
+        activateSwitchLayout(view.getId(), R.id.panel_filter);
+        fabRevealLayout.revealMainView();
+    }
+
+    @OnClick(R.id.switch_pick_text)
+    void onPickTextClicked(View view) {
+        activateSwitchLayout(view.getId(), R.id.panel_text);
+        fabRevealLayout.revealMainView();
+    }
+
+    @OnClick(R.id.switch_pick_audio)
+    void onPickAudioClicked(View view) {
+        activateSwitchLayout(view.getId(), R.id.panel_audio);
+        fabRevealLayout.revealMainView();
+    }
+
+    private void activateSwitchLayout(int selectedId, int activeId) {
+        setViewSelectState(mContainerControlButtons, selectedId);
+        setViewVisibleState(mContainerPanels, activeId);
+    }
+
+    private void setViewSelectState(ViewGroup parent, int viewId) {
+            int childrenCount = parent.getChildCount();
+        View view;
+            for (int index = 0; index < childrenCount; index++) {
+                view = parent.getChildAt(index);
+                view.setSelected(viewId == view.getId());
+            }
+    }
+
+    private void setViewVisibleState(ViewGroup parent, int viewId) {
+        int childrenCount = parent.getChildCount();
+        View view;
+        for (int index = 0; index < childrenCount; index++) {
+            view = parent.getChildAt(index);
+            int visibility = viewId == view.getId() ? View.VISIBLE : View.GONE;
+            view.setVisibility(visibility);
+        }
+    }
+
+    @OnClick(R.id.game_cover_image)
+    void onCoverClicked(View view) {
+        fabRevealLayout.revealMainView();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FABRevealLayout fabRevealLayout = (FABRevealLayout) findViewById(R.id.fab_reveal_layout);
+
+        ButterKnife.bind(this);
+//        FABRevealLayout fabRevealLayout = (FABRevealLayout) findViewById(R.id.fab_reveal_layout);
         configureFABReveal(fabRevealLayout);
+
+        activateSwitchLayout(R.id.switch_pick_filter, R.id.panel_filter);
     }
 
     private void configureFABReveal(FABRevealLayout fabRevealLayout) {
@@ -40,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSecondaryViewAppeared(final FABRevealLayout fabRevealLayout, View secondaryView) {
-                prepareBackTransition(fabRevealLayout);
+//                prepareBackTransition(fabRevealLayout);
             }
         });
     }
@@ -54,4 +123,12 @@ public class MainActivity extends AppCompatActivity {
         }, 2000);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (fabRevealLayout.onBackPressed()) {
+            // do nothing but return directory
+            return;
+        }
+        super.onBackPressed();
+    }
 }

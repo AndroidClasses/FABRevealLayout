@@ -315,4 +315,12 @@ public class FABRevealLayout extends RelativeLayout {
         super.setLayoutParams(params);
     }
 
+    public boolean onBackPressed() {
+        if (isShowingMainView()) {
+            return false;
+        } else {
+            revealMainView();
+            return true;
+        }
+    }
 }
