@@ -1,36 +1,12 @@
 apply plugin: 'com.android.library'
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'fabreveallayout'
-
-    publishedGroupId = 'com.truizlop.fabreveallayout'
-    libraryName = 'FABRevealLayout'
-    artifact = 'library'
-
-    libraryDescription = 'A layout to transition between two views using a Floating Action Button as shown in many Material Design concepts'
-
-    siteUrl = 'https://github.com/truizlop/FABRevealLayout'
-    gitUrl = 'https://github.com/truizlop/FABRevealLayout.git'
-
-    libraryVersion = '1.0.0'
-
-    developerId = 'truizlop'
-    developerName = 'Tomás Ruiz-López'
-    developerEmail = 'trl.ironside@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 22
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -43,10 +19,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:design:22.2.0'
-}
 
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+// App's dependencies, including test
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+}
