@@ -17,13 +17,12 @@ package com.truizlop.fabreveallayoutsample2;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.truizlop.fabreveallayout.FABRevealLayout;
 import com.truizlop.fabreveallayout.OnRevealChangeListener;
@@ -59,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
     void onPickAudioClicked(View view) {
         activateSwitchLayout(view.getId(), R.id.panel_audio);
         fabRevealLayout.revealMainView();
+    }
+
+    @OnClick(R.id.video_preview_theme_volume)
+    void onThemeVolumeClicked(View view) {
+        Snackbar.make(getWindow().getDecorView(), "Theme volume trigger.", Snackbar.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.video_preview_video_volume)
+    void onThemeVideoClicked(View view) {
+        Snackbar.make(getWindow().getDecorView(), "Origin source volume trigger.", Snackbar.LENGTH_SHORT).show();
     }
 
     private void activateSwitchLayout(int selectedId, int activeId) {

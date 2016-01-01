@@ -10,6 +10,40 @@
         android:src="@drawable/mgs"
         style="@style/GameCoverStyle" />
 
+    <LinearLayout
+        android:id="@+id/container_sub_audio"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/container_sub_audio_height"
+        android:paddingRight="@dimen/container_sub_audio_margin_right"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/video_preview_theme_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_music_checkbox_selector"
+            android:button="@null" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/video_preview_video_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_speaker_checkbox_selector"
+            android:button="@null" />
+    </LinearLayout>
+
     <com.truizlop.fabreveallayout.FABRevealLayout
         android:id="@+id/fab_reveal_layout"
         android:layout_width="match_parent"
